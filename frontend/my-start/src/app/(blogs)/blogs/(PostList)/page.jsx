@@ -10,12 +10,12 @@ import queryString from "query-string";
 async function BlogPage({ searchParams }) {
   // console.log(searchParams);
 
-  const queries = queryString.stringify(searchParams);
-  const cookieStore = cookies();
+  const queries = queryString.stringify(await searchParams);
+  const cookieStore = await cookies();
   const options = setCookieOnReq(cookieStore);
-  const posts = await getPosts(queries, options);
+  const {posts} = await getPosts(queries, options);
   // console.log(posts);
-  const { search } = searchParams;
+  const { search } = await searchParams;
   return (
     <div>
       {search ? (

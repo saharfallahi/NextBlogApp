@@ -12,8 +12,8 @@ function Search() {
     e.preventDefault();
     const search = e.target.search;
     const searchValue = search.value;
-    console.log(searchValue);
     const newParams = new URLSearchParams(searchParams);
+    newParams.set("page","1");
 
     if (searchValue) {
       newParams.set("search", searchValue.toString());

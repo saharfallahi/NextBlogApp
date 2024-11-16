@@ -5,14 +5,14 @@ import { cookies } from "next/headers";
 import queryString from "query-string";
 
 async function Category({ params, searchParams }) {
-  const { categorySlug } = params;
+  const { categorySlug } = await params;
 
   const queries = `${queryString.stringify(
-    searchParams
+    await searchParams
   )}&categorySlug=${categorySlug}`;
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const options = setCookieOnReq(cookieStore);
-  const posts = await getPosts(queries, options);
+  const {posts} = await getPosts(queries, options);
 
   return (
     <div>
