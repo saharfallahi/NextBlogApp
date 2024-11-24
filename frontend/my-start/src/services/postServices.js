@@ -31,6 +31,8 @@ export async function bookmarkPostApi(postId) {
 }
 
 export async function createPostApi(data) {
+  console.log(data);
+  
   return http.post(`/post/create`,data).then(({ data }) => data.data);
 }
 
